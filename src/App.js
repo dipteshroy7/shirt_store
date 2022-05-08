@@ -1,13 +1,53 @@
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
-import { Navbar, Footer, Filters } from "./components";
+import { Navbar, Filters, ResultBox } from "./components";
+
+import { StoreContext } from "./Contexts/StoreContext";
+
+import { data } from "./Assets/Data/shirt_data";
 
 function App() {
+  const [shirtData, setShirtData] = useState(data);
+  const [filterbrands, setfilterbrands] = useState([]);
+  const [sortBox, setSortBox] = useState();
+  const [clearAllFilters, setClearAllFilters] = useState(true);
+
+  useEffect(() => {
+    let brands = [];
+    shirtData.forEach((data) => {
+      let bt = [];
+      if (data[1].includes("Men")) bt = data[1].split(" Men ");
+      else if (data[1].includes("Women")) bt = data[1].split(" Women ");
+      else if (data[1].includes("Boys")) bt = data[1].split(" Boys ");
+      else if (data[1].includes("Girls")) bt = data[1].split(" Girls ");
+      brands.push(bt[0]);
+    });
+    setfilterbrands([...new Set(brands)]);
+  }, [shirtData]);
+
+  useEffect(() => {
+    if (clearAllFilters === true) {
+      setSortBox("Recommended");
+      document.querySelectorAll(".sortByDropDown li").forEach((li) => (li.style.fontWeight = "100"));
+      document.querySelectorAll("input[type=radio]:checked").forEach((btn) => (btn.checked = false));
+      setShirtData([...data]);
+    }
+  }, [clearAllFilters]);
+
   return (
     <div className="App">
-      <Navbar />
-      <Footer />
-      <Filters />
+      <StoreContext.Provider
+        value={{ shirtData, setShirtData, filterbrands, sortBox, setSortBox, clearAllFilters, setClearAllFilters }}
+      >
+        <Navbar />
+        <div className="container">
+          <div className="home_page">
+            <Filters />
+            <ResultBox />
+          </div>
+        </div>
+      </StoreContext.Provider>
     </div>
   );
 }

@@ -1,0 +1,38 @@
+.Card {
+  width: 210px;
+  height: 360px;
+  text-align: left;
+  margin: 0 10px 30px;
+  cursor: pointer;
+}
+.Card:hover {
+  box-shadow: 0 2px 16px 4px rgb(40 44 63 / 7%);
+}
+.shirt_img {
+  width: 100%;
+}
+.shirt_info {
+  padding: 10px;
+}
+.shirt-brand {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  color: #282c3f;
+  margin-bottom: 6px;
+  text-overflow: ellipsis;
+}
+.shirt-txt {
+  color: #535766;
+  font-size: 14px;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shirt-price {
+  font-size: 14px;
+  color: #282c3f;
+  font-weight: 600;
+  margin-top: 10px;
+}
