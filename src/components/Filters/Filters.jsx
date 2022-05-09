@@ -6,8 +6,7 @@ import { data } from "../../Assets/Data/shirt_data";
 import "./Filters.css";
 
 function Filters() {
-  const { shirtData, setShirtData, filterbrands, clearAllFilters, setClearAllFilters, sortBox } =
-    useContext(StoreContext);
+  const { setShirtData, filterBrands, clearAllFilters, setClearAllFilters, sortBox } = useContext(StoreContext);
 
   function sortLtoH(filter_data) {
     let sortedList = filter_data;
@@ -22,12 +21,12 @@ function Filters() {
 
   function setGender(gender) {
     let filter_data = data.filter((d) => d[1].includes(gender));
-    if(sortBox === "Price: Low to High") sortLtoH(filter_data);
-    else if(sortBox === "Price: High to Low") sortHtoL(filter_data);
+    if (sortBox === "Price: Low to High") sortLtoH(filter_data);
+    else if (sortBox === "Price: High to Low") sortHtoL(filter_data);
     else setShirtData(filter_data);
   }
 
-  let brandfilters = filterbrands.map((brand, index) => {
+  let brandfilters = filterBrands.map((brand, index) => {
     return (
       <>
         <label key={brand + index} htmlFor={brand}>

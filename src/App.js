@@ -9,7 +9,7 @@ import { data } from "./Assets/Data/shirt_data";
 
 function App() {
   const [shirtData, setShirtData] = useState(data);
-  const [filterbrands, setfilterbrands] = useState([]);
+  const [filterBrands, setFilterBrands] = useState([]);
   const [sortBox, setSortBox] = useState();
   const [clearAllFilters, setClearAllFilters] = useState(true);
 
@@ -23,7 +23,7 @@ function App() {
       else if (data[1].includes("Girls")) bt = data[1].split(" Girls ");
       brands.push(bt[0]);
     });
-    setfilterbrands([...new Set(brands)]);
+    setFilterBrands([...new Set(brands)]);
   }, [shirtData]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <StoreContext.Provider
-        value={{ shirtData, setShirtData, filterbrands, sortBox, setSortBox, clearAllFilters, setClearAllFilters }}
+        value={{ shirtData, setShirtData, filterBrands, sortBox, setSortBox, clearAllFilters, setClearAllFilters }}
       >
         <Navbar />
         <div className="container">
