@@ -3,7 +3,8 @@
   height: 360px;
   text-align: left;
   margin: 0 10px 30px;
-  cursor: pointer;
+  /* cursor: pointer; */
+  position: relative;
 }
 .Card:hover {
   box-shadow: 0 2px 16px 4px rgb(40 44 63 / 7%);
@@ -19,7 +20,7 @@
   font-weight: 600;
   line-height: 1;
   color: #282c3f;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   text-overflow: ellipsis;
 }
 .shirt-txt {
@@ -34,5 +35,51 @@
   font-size: 14px;
   color: #282c3f;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 8px;
+}
+.btns {
+  position: absolute;
+  width: calc(100% - 20px);
+  padding: 10px;
+  background-color: #fff;
+  top: 184px;
+  display: none;
+}
+.btns button {
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wishlist-btn {
+  background-color: #fff;
+  border: 1px solid #d4d5d9;
+  color: #282c3f;
+  margin-bottom: 10px;
+}
+.wishlist-btn:hover {
+  border: 1px solid #929396;
+}
+.wishlist-icon {
+  width: 17px;
+  height: 22px;
+  background-position: -315px -186px;
+  margin-right: 5px;
+}
+.addbag-btn {
+  background-color: #ff3e6c;
+  border: 1px solid #ff3e6c;
+  color: #fff;
+}
+.addbag-icon {
+  background-position: -2283px -40px;
+  width: 23px;
+  height: 22px;
+  transform: scale(.8);
+  margin-right: 5px;
 }

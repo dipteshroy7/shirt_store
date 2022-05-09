@@ -25,10 +25,6 @@ nav {
 .nav-btn span {
     cursor: pointer;
 }
-.web_sprite {
-    background: url(https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png);
-    background-size: 1404px 105px;
-}
 .wishlist-icon {
     height: 22px;
     width: 17px;

@@ -4,6 +4,10 @@
   min-height: calc(100vh - 80px);
   margin: auto;
 }
+.web_sprite {
+  background: url(https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png);
+  background-size: 1404px 105px;
+}
 .home_page {
   display: flex;
 }

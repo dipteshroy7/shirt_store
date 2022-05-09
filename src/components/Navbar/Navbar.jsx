@@ -5,7 +5,7 @@ import "./Navbar.css";
 function Navbar() {
   return (
     <nav>
-      <span className="web_sprite bag-icon brand-logo"></span>
+      <span className="web_sprite brand-logo"></span>
       <div className="nav-actions">
         <div className="search-bar">
           <div className="search-btn">

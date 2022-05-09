@@ -27,7 +27,7 @@ function ResultBox() {
     }
     brand = bt[0];
 
-    return <Card key={data[0]} img={data[2]} brand={brand} txt={txt} price={data[3]} />;
+    return <Card key={data[0]} id={data[0]} img={data[2]} brand={brand} txt={txt} price={data[3]} />;
   });
 
   function showSortByDropDown() {
@@ -68,13 +68,23 @@ function ResultBox() {
           <span className="web_sprite downArrow-icon"></span>
           <div className="sortbox sortByDropDown" onMouseLeave={hideSortByDropDown2}>
             <ul>
-              <li id="LTH" onClick={sortLtoH}>Price: Low to High</li>
-              <li id="HTL" onClick={sortHtoL}>Price: High to Low</li>
+              <li id="LTH" onClick={sortLtoH}>
+                Price: Low to High
+              </li>
+              <li id="HTL" onClick={sortHtoL}>
+                Price: High to Low
+              </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className="shirtCards">{cards}</div>
+      <div className="shirtCards">
+        {cards}
+        <div className="dummyCard"></div>
+        <div className="dummyCard"></div>
+        <div className="dummyCard"></div>
+        <div className="dummyCard"></div>
+      </div>
     </div>
   );
 }
