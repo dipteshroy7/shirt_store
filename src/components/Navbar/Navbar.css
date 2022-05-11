@@ -21,6 +21,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .nav-btn span {
     cursor: pointer;
@@ -40,6 +41,7 @@ nav {
     height: 36px;
     background-position: -462px 0;
     float: left;
+    cursor: pointer;
 }
 .search-bar {
     width: 360px;
@@ -79,4 +81,17 @@ input:focus{
     transform: scale(.7);
     background-position: -754px 0;
     cursor: pointer;
+}
+.number-bubble {
+    position: absolute;
+    background-color: #f16565;
+    color: #fff;
+    text-align: center;
+    min-width: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 10px;
+    top: -3px;
+    left: 32px;
 }

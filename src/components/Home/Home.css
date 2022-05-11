@@ -1,0 +1,18 @@
+.home_page {
+  display: flex;
+  flex-direction: column;
+}
+.home_heading {
+  font-weight: 600;
+  font-size: 16px;
+  color: #282c3f;
+  padding: 10px 25px;
+  border-bottom: 1px solid #edebef;
+}
+.home_body {
+  display: flex;
+}
+.item-count {
+  font-weight: 100;
+  color: #878b94;
+}

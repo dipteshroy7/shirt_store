@@ -1,15 +1,12 @@
 .container {
   padding-top: 80px;
   max-width: 1600px;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 140px);
   margin: auto;
 }
 .web_sprite {
   background: url(https://constant.myntassets.com/web/assets/img/MyntraWebSprite_27_01_2021.png);
   background-size: 1404px 105px;
-}
-.home_page {
-  display: flex;
 }
 input[type="radio"]:checked:before {
   width: calc(100% - 2px);
@@ -41,4 +38,11 @@ input[type="checkbox"]:checked:after {
   background-color: #ff3f6c;
   content: "";
   display: inline-block;
+}
+/* overriding toastify position */
+.Toastify__toast-container--top-right {
+  top: 5em;
+}
+.Toastify__progress-bar-theme--dark {
+  background: #ff3e6c;
 }

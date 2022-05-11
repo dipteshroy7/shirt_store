@@ -15,6 +15,7 @@ function Filters() {
     clearAllFilters,
     setClearAllFilters,
     sortBox,
+    setGenderName,
   } = useContext(StoreContext);
 
   function sortLtoH(filter_data) {
@@ -30,6 +31,7 @@ function Filters() {
 
   function setGender(gender) {
     setClearAllFilters(false);
+    setGenderName(gender);
     setSelectedFilterBrands([]);
     document.querySelectorAll("input[type=checkbox]:checked").forEach((btn) => (btn.checked = false));
     let filter_data = data.filter((d) => d[1].includes(gender));

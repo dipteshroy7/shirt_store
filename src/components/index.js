@@ -1,6 +1,10 @@
 export { default as Navbar } from "./Navbar/Navbar";
-export { default as Footer } from "./Footer/Footer";
+export { default as Home } from "./Home/Home";
 export { default as Filters } from "./Filters/Filters";
-export { default as Card } from "./Card/Card";
 export { default as ResultBox } from "./ResultBox/ResultBox";
-export { default as CartContainer } from "./CartContainer/CartContainer";
+export { default as Card } from "./Card/Card";
+export { default as Wishlist } from "./Wishlist/Wishlist";
+export { default as WishCard } from "./WishCard/WishCard";
+export { default as Bag } from "./Bag/Bag";
+export { default as BagCard } from "./BagCard/BagCard";
+export { default as Footer } from "./Footer/Footer";

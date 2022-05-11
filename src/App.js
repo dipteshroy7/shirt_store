@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-import { Navbar, Filters, ResultBox } from "./components";
+import { Navbar, Home, Wishlist, Bag, Footer } from "./components";
 
 import { StoreContext } from "./Contexts/StoreContext";
 
@@ -10,14 +12,18 @@ import { data } from "./Assets/Data/shirt_data";
 function App() {
   // const [searchedData, setSearchedData] = useState(data);
   const [shirtData, setShirtData] = useState(data);
+  const [genderName, setGenderName] = useState("Everyone");
   const [genderShirtData, setGenderShirtData] = useState(data);
   const [filterBrands, setFilterBrands] = useState([]);
   const [selectedFilterBrands, setSelectedFilterBrands] = useState([]);
-  const [selectedFilterPrices, setFilterPrices] = useState([]);
+  const [selectedFilterPrices, setSelectedFilterPrices] = useState([]);
   const [sortBox, setSortBox] = useState();
   const [clearAllFilters, setClearAllFilters] = useState(true);
   const [wishlist, setWishlist] = useState([]);
   const [bag, setBag] = useState([]);
+  const [wishlistID, setWishlistID] = useState([]);
+  const [bagID, setBagID] = useState([]);
+  const [page, setPage] = useState("home");
 
   function sortLtoH(filter_data) {
     let sortedList = filter_data;
@@ -33,7 +39,6 @@ function App() {
   useEffect(() => {
     let brands = [];
     let shirts = [...genderShirtData];
-    // console.log(selectedFilterBrands);
     genderShirtData.forEach((data) => {
       let bt = [];
       if (data[1].includes("Men")) bt = data[1].split(" Men ");
@@ -55,7 +60,6 @@ function App() {
     if (selectedFilterBrands.length === 0) {
       setShirtData(genderShirtData);
     }
-    // console.log(shirts);
     if (selectedFilterPrices.length > 0) {
     }
     if (sortBox === "Price: Low to High") sortLtoH(shirts);
@@ -71,6 +75,7 @@ function App() {
       document.querySelectorAll("input[type=checkbox]:checked").forEach((btn) => (btn.checked = false));
       setShirtData([...data]);
       setGenderShirtData([...data]);
+      setGenderName("Everyone");
       setSelectedFilterBrands([]);
     }
   }, [clearAllFilters]);
@@ -79,25 +84,42 @@ function App() {
     <div className="App">
       <StoreContext.Provider
         value={{
+          bag,
+          page,
+          bagID,
           sortBox,
+          wishlist,
           shirtData,
+          wishlistID,
+          genderName,
           filterBrands,
           clearAllFilters,
+          genderShirtData,
           selectedFilterBrands,
-          setSortBox,
-          setShirtData,
+          selectedFilterPrices,
+          setSelectedFilterPrices,
+          setSelectedFilterBrands,
           setGenderShirtData,
           setClearAllFilters,
-          setSelectedFilterBrands,
+          setFilterBrands,
+          setGenderName,
+          setWishlistID,
+          setShirtData,
+          setWishlist,
+          setSortBox,
+          setBagID,
+          setPage,
+          setBag,
         }}
       >
         <Navbar />
         <div className="container">
-          <div className="home_page">
-            <Filters />
-            <ResultBox />
-          </div>
+          {page === "home" && <Home />}
+          {page === "wishlist" && <Wishlist />}
+          {page === "bag" && <Bag />}
         </div>
+        <Footer />
+        <ToastContainer theme="dark" autoClose={2000} />
       </StoreContext.Provider>
     </div>
   );

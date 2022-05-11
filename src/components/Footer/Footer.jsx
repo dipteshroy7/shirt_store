@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
 
-import './Footer.css'
+import "./Footer.css";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
-    <div>Footer</div>
-  )
+    <footer>
+      Copyright© {currentYear} Diptesh Roy All rights reserved.
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
