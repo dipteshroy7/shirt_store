@@ -5,10 +5,9 @@ import { toast } from "react-toastify";
 import "./BagCard.css";
 
 function BagCard({ id, brand, txt, img, price }) {
-  const { bagID, setBagID, bag, setBag } = useContext(StoreContext);
+  const { bag, setBag } = useContext(StoreContext);
 
   function removeFromBag() {
-    setBagID([...bagID.filter((e) => e !== id)]);
     setBag([...bag.filter((e) => e[0] !== id)]);
     toast("1 Product removed from Bag");
   }

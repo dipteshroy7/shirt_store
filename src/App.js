@@ -21,8 +21,6 @@ function App() {
   const [clearAllFilters, setClearAllFilters] = useState(true);
   const [wishlist, setWishlist] = useState([]);
   const [bag, setBag] = useState([]);
-  const [wishlistID, setWishlistID] = useState([]);
-  const [bagID, setBagID] = useState([]);
   const [page, setPage] = useState("home");
 
   function sortLtoH(filter_data) {
@@ -86,11 +84,9 @@ function App() {
         value={{
           bag,
           page,
-          bagID,
           sortBox,
           wishlist,
           shirtData,
-          wishlistID,
           genderName,
           filterBrands,
           clearAllFilters,
@@ -103,11 +99,9 @@ function App() {
           setClearAllFilters,
           setFilterBrands,
           setGenderName,
-          setWishlistID,
           setShirtData,
           setWishlist,
           setSortBox,
-          setBagID,
           setPage,
           setBag,
         }}

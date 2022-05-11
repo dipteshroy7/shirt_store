@@ -6,19 +6,16 @@ import { toast } from "react-toastify";
 import "./WishCard.css";
 
 function WishCard({ id, txt, img, price }) {
-  const { bag, bagID, setBag, setBagID, wishlistID, wishlist, setWishlistID, setWishlist } = useContext(StoreContext);
+  const { bag, setBag, wishlist, setWishlist } = useContext(StoreContext);
 
   function removeFromWishList() {
-    setWishlistID([...wishlistID.filter((e) => e !== id)]);
     setWishlist([...wishlist.filter((e) => e[0] !== id)]);
     toast("1 Product removed from Wishlist");
   }
   function moveToBag() {
-    if (!bagID.includes(id)) {
-      setBagID([...bagID, id]);
+    if (!bag.map((e) => e[0]).includes(id)) {
       setBag([...bag, [id, txt, img, price]]);
     }
-    setWishlistID([...wishlistID.filter((e) => e !== id)]);
     setWishlist([...wishlist.filter((e) => e[0] !== id)]);
     toast("1 Product moved to Bag");
   }

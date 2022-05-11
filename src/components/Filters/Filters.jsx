@@ -42,6 +42,7 @@ function Filters() {
   }
 
   function setBrands(brand) {
+    setClearAllFilters(false);
     if (document.getElementById(brand).checked) {
       setSelectedFilterBrands([...selectedFilterBrands, brand]);
     } else {

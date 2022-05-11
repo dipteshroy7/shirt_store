@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "./Card.css";
 
 const Card = ({ id, brand, txt, img, price }) => {
-  const { bagID, wishlistID, setBagID, setWishlistID, bag, wishlist, setBag, setWishlist } = useContext(StoreContext);
+  const { bag, wishlist, setBag, setWishlist } = useContext(StoreContext);
 
   function showBtns() {
     document.getElementById(id).style.display = "block";
@@ -14,17 +14,15 @@ const Card = ({ id, brand, txt, img, price }) => {
     document.getElementById(id).style.display = "none";
   }
   function addToWishList() {
-    if (wishlistID.includes(id)) toast("This Product already in Wishlist");
+    if (wishlist.map((e) => e[0]).includes(id)) toast("This Product already in Wishlist");
     else {
-      setWishlistID([...wishlistID, id]);
       setWishlist([...wishlist, [id, brand + " " + txt, img, price]]);
       toast("1 Product added to Wishlist");
     }
   }
   function addToBag() {
-    if (bagID.includes(id)) toast("This Product already in Bag");
+    if (bag.map((e) => e[0]).includes(id)) toast("This Product already in Bag");
     else {
-      setBagID([...bagID, id]);
       setBag([...bag, [id, brand + " " + txt, img, price]]);
       toast("1 Product added to Bag");
     }
