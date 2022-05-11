@@ -85,6 +85,7 @@ function ResultBox() {
         <div className="dummyCard"></div>
         <div className="dummyCard"></div>
       </div>
+      {shirtData.length === 0 && <div className="no_shirt_found"> No match found. Please try different filters. </div>}
     </div>
   );
 }

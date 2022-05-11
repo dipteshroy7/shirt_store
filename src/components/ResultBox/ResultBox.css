@@ -60,3 +60,8 @@
 .dummyCard {
     width: 230px;
 }
+.no_shirt_found {
+    text-align: center;
+    color: #696e79;
+    font-size: 18px
+}

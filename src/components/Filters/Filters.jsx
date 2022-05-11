@@ -7,15 +7,18 @@ import "./Filters.css";
 
 function Filters() {
   const {
-    setShirtData,
+    sortBox,
     filterBrands,
-    setGenderShirtData,
+    filterPrices,
+    setShirtData,
+    setGenderName,
+    clearAllFilters,
+    setFilteredShirtData,
+    setClearAllFilters,
     selectedFilterBrands,
     setSelectedFilterBrands,
-    clearAllFilters,
-    setClearAllFilters,
-    sortBox,
-    setGenderName,
+    selectedFilterPrices,
+    setSelectedFilterPrices,
   } = useContext(StoreContext);
 
   function sortLtoH(filter_data) {
@@ -33,9 +36,10 @@ function Filters() {
     setClearAllFilters(false);
     setGenderName(gender);
     setSelectedFilterBrands([]);
+    setSelectedFilterPrices([]);
     document.querySelectorAll("input[type=checkbox]:checked").forEach((btn) => (btn.checked = false));
     let filter_data = data.filter((d) => d[1].includes(gender));
-    setGenderShirtData(filter_data);
+    setFilteredShirtData(filter_data);
     if (sortBox === "Price: Low to High") sortLtoH(filter_data);
     else if (sortBox === "Price: High to Low") sortHtoL(filter_data);
     else setShirtData(filter_data);
@@ -46,14 +50,15 @@ function Filters() {
     if (document.getElementById(brand).checked) {
       setSelectedFilterBrands([...selectedFilterBrands, brand]);
     } else {
-      let clone = [...selectedFilterBrands];
-      let temp = [];
-      for (let i = 0; i < clone.length; i++) {
-        if (clone[i] !== brand) {
-          temp.push(clone[i]);
-        }
-      }
-      setSelectedFilterBrands(temp);
+      setSelectedFilterBrands(selectedFilterBrands.filter((e) => e !== brand));
+    }
+  }
+  function setPrices(price) {
+    setClearAllFilters(false);
+    if (document.getElementById(price).checked) {
+      setSelectedFilterPrices([...selectedFilterPrices, price]);
+    } else {
+      setSelectedFilterPrices(selectedFilterPrices.filter((e) => e !== price));
     }
   }
 
@@ -65,10 +70,30 @@ function Filters() {
           type="checkbox"
           className="filter-items"
           id={brand}
-          value={brand}
           onClick={() => setBrands(brand)}
         />
         <label htmlFor={brand}>{brand}</label>
+        <br />
+      </>
+    );
+  });
+
+  let pricefilters = filterPrices.map((price, index) => {
+    return (
+      <>
+        <input
+          key={price + index}
+          type="checkbox"
+          className="filter-items"
+          id={price}
+          onClick={() => setPrices(price)}
+        />
+        <label htmlFor={price}>
+          {price === 600 && "Rs. 300 to Rs. 600"}
+          {price === 750 && "Rs. 601 to Rs. 750"}
+          {price === 1500 && "Rs. 751 to Rs. 1500"}
+          {price === 7000 && "Rs. 1501 to Rs. 7000"}
+        </label>
         <br />
       </>
     );
@@ -107,6 +132,7 @@ function Filters() {
       </div>
       <div key="scjs9kjdn" className="filter-containers">
         <div className="filter-title">PRICE</div>
+        {pricefilters}
       </div>
     </div>
   );

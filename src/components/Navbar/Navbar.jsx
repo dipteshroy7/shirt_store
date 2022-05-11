@@ -3,11 +3,15 @@ import { StoreContext } from "../../Contexts/StoreContext";
 
 import "./Navbar.css";
 
+import { data } from "../../Assets/Data/shirt_data";
+
 function Navbar() {
-  const { bag, wishlist, setPage, setClearAllFilters } = useContext(StoreContext);
+  const { bag, wishlist, setPage, setClearAllFilters, setFilteredShirtData, setSearchedData } =
+    useContext(StoreContext);
 
   function navHome() {
     setPage("home");
+    setSearchedData("");
     setClearAllFilters(true);
   }
   function navWishlist() {
@@ -18,16 +22,33 @@ function Navbar() {
     setPage("bag");
     setClearAllFilters(true);
   }
+  function search() {
+    setClearAllFilters(true);
+    setPage("home");
+    let search_txt = document.getElementById("search_txt").value;
+    search_txt = search_txt.replace(/\s+/g,' ').trim();
+    setSearchedData(search_txt);
+    search_txt = search_txt.toLowerCase();
+    document.getElementById("search_txt").value = "";
+    setFilteredShirtData(data.filter((e) => e[1].toLowerCase().includes(search_txt)));
+  }
 
   return (
     <nav>
       <span className="web_sprite brand-logo" onClick={navHome}></span>
       <div className="nav-actions">
         <div className="search-bar">
-          <div className="search-btn">
+          <div className="search-btn" onClick={search}>
             <span className="web_sprite search-icon"></span>
           </div>
-          <input type="text" placeholder={"Search for products, brands and more"}></input>
+          <input
+            type="text"
+            id="search_txt"
+            placeholder={"Search for products, brands and more"}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") search();
+            }}
+          ></input>
         </div>
         <div className="nav-btn" onClick={navWishlist}>
           {wishlist.length > 0 && <span className="number-bubble">{wishlist.length}</span>}
