@@ -8,6 +8,7 @@ import "./Filters.css";
 function Filters() {
   const {
     sortBox,
+    searchedData,
     filterBrands,
     filterPrices,
     setShirtData,
@@ -37,8 +38,10 @@ function Filters() {
     setGenderName(gender);
     setSelectedFilterBrands([]);
     setSelectedFilterPrices([]);
+    let filter_data = [];
     document.querySelectorAll("input[type=checkbox]:checked").forEach((btn) => (btn.checked = false));
-    let filter_data = data.filter((d) => d[1].includes(gender));
+    if (searchedData === "") filter_data = data.filter((d) => d[1].includes(gender));
+    else filter_data = data.filter((e) => e[1].toLowerCase().includes(searchedData.toLowerCase())).filter((d) => d[1].includes(gender));
     setFilteredShirtData(filter_data);
     if (sortBox === "Price: Low to High") sortLtoH(filter_data);
     else if (sortBox === "Price: High to Low") sortHtoL(filter_data);
