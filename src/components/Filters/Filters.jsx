@@ -41,7 +41,10 @@ function Filters() {
     let filter_data = [];
     document.querySelectorAll("input[type=checkbox]:checked").forEach((btn) => (btn.checked = false));
     if (searchedData === "") filter_data = data.filter((d) => d[1].includes(gender));
-    else filter_data = data.filter((e) => e[1].toLowerCase().includes(searchedData.toLowerCase())).filter((d) => d[1].includes(gender));
+    else
+      filter_data = data
+        .filter((e) => e[1].toLowerCase().includes(searchedData.toLowerCase()))
+        .filter((d) => d[1].includes(gender));
     setFilteredShirtData(filter_data);
     if (sortBox === "Price: Low to High") sortLtoH(filter_data);
     else if (sortBox === "Price: High to Low") sortHtoL(filter_data);
@@ -67,7 +70,7 @@ function Filters() {
 
   let brandfilters = filterBrands.map((brand, index) => {
     return (
-      <>
+      <div key={brand + index}>
         <input
           key={brand + index}
           type="checkbox"
@@ -76,35 +79,27 @@ function Filters() {
           onClick={() => setBrands(brand)}
         />
         <label htmlFor={brand}>{brand}</label>
-        <br />
-      </>
+      </div>
     );
   });
 
   let pricefilters = filterPrices.map((price, index) => {
     return (
-      <>
-        <input
-          key={price + index}
-          type="checkbox"
-          className="filter-items"
-          id={price}
-          onClick={() => setPrices(price)}
-        />
+      <div key={price + index}>
+        <input type="checkbox" className="filter-items" id={price} onClick={() => setPrices(price)} />
         <label htmlFor={price}>
           {price === 600 && "Rs. 300 to Rs. 600"}
           {price === 750 && "Rs. 601 to Rs. 750"}
           {price === 1500 && "Rs. 751 to Rs. 1500"}
           {price === 7000 && "Rs. 1501 to Rs. 7000"}
         </label>
-        <br />
-      </>
+      </div>
     );
   });
 
   return (
     <div className="Filters">
-      <div key="askncjxi2" className="filter-containers">
+      <div  className="filter-containers">
         <span style={{ fontSize: "17px", fontWeight: 900 }}>FILTERS</span>
         {!clearAllFilters && (
           <span className="filter-clearAllBtn" onClick={() => setClearAllFilters(true)}>
@@ -112,28 +107,28 @@ function Filters() {
           </span>
         )}
       </div>
-      <div key="scjh8issc" className="filter-containers" style={{ fontWeight: 600 }}>
-        <label key="akjncknd" htmlFor="Men" onClick={() => setGender("Men")}>
+      <div className="filter-containers" style={{ fontWeight: 600 }}>
+        <label htmlFor="Men" onClick={() => setGender("Men")}>
           <input type="radio" className="filter-items" id="Men" name="gender" /> Men
         </label>
         <br />
-        <label key="skjduis" htmlFor="Women" onClick={() => setGender("Women")}>
+        <label htmlFor="Women" onClick={() => setGender("Women")}>
           <input type="radio" className="filter-items" id="Women" name="gender" /> Women
         </label>
         <br />
-        <label key="ctdgcddc" htmlFor="Boys" onClick={() => setGender("Boys")}>
+        <label htmlFor="Boys" onClick={() => setGender("Boys")}>
           <input type="radio" className="filter-items" id="Boys" name="gender" /> Boys
         </label>
         <br />
-        <label key="oiuyttrv" htmlFor="Girls" onClick={() => setGender("Girls")}>
+        <label htmlFor="Girls" onClick={() => setGender("Girls")}>
           <input type="radio" className="filter-items" id="Girls" name="gender" /> Girls
         </label>
       </div>
-      <div key="scj7acsjd" className="filter-containers">
+      <div className="filter-containers">
         <div className="filter-title">BRAND</div>
         {brandfilters}
       </div>
-      <div key="scjs9kjdn" className="filter-containers">
+      <div className="filter-containers">
         <div className="filter-title">PRICE</div>
         {pricefilters}
       </div>
