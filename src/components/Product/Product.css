@@ -3,7 +3,6 @@
   margin: auto;
 }
 .product {
-  width: calc(100% - 30px);
   text-align: left;
   position: relative;
   margin: 30px 20px;
