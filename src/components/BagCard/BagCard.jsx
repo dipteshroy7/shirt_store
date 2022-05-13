@@ -5,16 +5,20 @@ import { toast } from "react-toastify";
 import "./BagCard.css";
 
 function BagCard({ id, brand, txt, img, price }) {
-  const { bag, setBag } = useContext(StoreContext);
+  const { bag, setBag, setProduct, setPage } = useContext(StoreContext);
 
   function removeFromBag() {
     setBag([...bag.filter((e) => e[0] !== id)]);
     toast("1 Product removed from Bag");
   }
+  function navProductPage() {
+    setProduct([id, txt, img, price]);
+    setPage("product");
+  }
 
   return (
     <div className="BagCard">
-      <img className="shirt_img-bag" src={img} alt="" />
+      <img className="shirt_img-bag" src={img} alt="" onClick={navProductPage}/>
       <button className="bag-cross-btn" onClick={removeFromBag}>
         <span className="web_sprite bag-cross"></span>
       </button>

@@ -8,6 +8,7 @@
 }
 .shirt_img {
   width: 100%;
+  cursor: pointer;
 }
 .shirt_info {
   padding: 10px;

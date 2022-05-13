@@ -12,6 +12,7 @@
 .shirt_img-bag {
   width: 120px; 
   margin-right: 12px;
+  cursor: pointer;
 }
 .shirt_info {
   padding: 10px;

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import "./WishCard.css";
 
 function WishCard({ id, txt, img, price }) {
-  const { bag, setBag, wishlist, setWishlist } = useContext(StoreContext);
+  const { bag, setBag, wishlist, setWishlist, setProduct, setPage } = useContext(StoreContext);
 
   function removeFromWishList() {
     setWishlist([...wishlist.filter((e) => e[0] !== id)]);
@@ -19,9 +19,13 @@ function WishCard({ id, txt, img, price }) {
     setWishlist([...wishlist.filter((e) => e[0] !== id)]);
     toast("1 Product moved to Bag");
   }
+  function navProductPage() {
+    setProduct([id, txt, img, price]);
+    setPage("product");
+  }
   return (
     <div className="WishCard" id={id}>
-      <img className="shirt_img" src={img} alt="" />
+      <img className="shirt_img" src={img} alt="" onClick={navProductPage}/>
       <button className="wishlist-cross-btn" onClick={removeFromWishList}>
         <span className="web_sprite wishlist-cross"></span>
       </button>
