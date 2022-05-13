@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-import { Navbar, Home, Wishlist, Bag, Footer } from "./components";
+import { Navbar, Home, Wishlist, Bag, Product, Footer } from "./components";
 
 import { StoreContext } from "./Contexts/StoreContext";
 
@@ -23,6 +23,7 @@ function App() {
   const [wishlist, setWishlist] = useState([]);
   const [bag, setBag] = useState([]);
   const [page, setPage] = useState("home");
+  const [product, setProduct] = useState([]);
 
   function sortLtoH(filter_data) {
     let sortedList = filter_data;
@@ -109,6 +110,7 @@ function App() {
         value={{
           bag,
           page,
+          product,
           sortBox,
           wishlist,
           shirtData,
@@ -131,6 +133,7 @@ function App() {
           setShirtData,
           setWishlist,
           setSortBox,
+          setProduct,
           setPage,
           setBag,
         }}
@@ -140,6 +143,7 @@ function App() {
           {page === "home" && <Home />}
           {page === "wishlist" && <Wishlist />}
           {page === "bag" && <Bag />}
+          {page === "product" && <Product />}
         </div>
         <Footer />
         <ToastContainer theme="dark" autoClose={2000} />

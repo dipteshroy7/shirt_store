@@ -7,4 +7,5 @@ export { default as Wishlist } from "./Wishlist/Wishlist";
 export { default as WishCard } from "./WishCard/WishCard";
 export { default as Bag } from "./Bag/Bag";
 export { default as BagCard } from "./BagCard/BagCard";
+export { default as Product } from "./Product/Product";
 export { default as Footer } from "./Footer/Footer";
