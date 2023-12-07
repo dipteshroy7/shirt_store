@@ -1,5 +1,5 @@
 # Myntra Shirt Store
-https://myntra-shirt-shop.herokuapp.com
+[WEBSITE LINK](https://shirt-store-one.vercel.app/)
 
 **Myntra Application created from scratch using React JS.**
 
